@@ -1,0 +1,42 @@
+[
+  "{{repeat(5)}}",
+  {
+    "_id": "{{objectId()}}",
+    "index": "{{index()}}",
+    "name": "{{firstName()}} {{surname()}}",
+    "photo": "http://placehold.it/32x32",
+    "email": "{{email()}}",
+    "company": "{{company().toUpperCase()}}",
+    "phone": "+1 {{phone()}}",
+    "address": "{{integer(100, 999)}} {{street()}}, {{city()}}, {{state()}}, {{integer(100, 10000)}}",
+    "about": "{{lorem(1, \"paragraphs\")}}",
+    "owed": "{{floating(1000, 4000, 2, \"$0,0.00\")}}",
+    "owes": "{{floating(1000, 4000, 2, \"$0,0.00\")}}",
+    "guid": "{{guid()}}",
+    "isActive": "{{bool()}}",
+    "groups": [
+      "{{repeat(4)}}",
+      {
+        "groupId": "{{objectId()}}",
+        "index": "{{index()}}",
+        "groupName": "{{firstName()}} {{surname()}}",
+        "members": [
+          "{{repeat(3)}}",
+          {
+            "_id": "{{objectId()}}",
+            "index": "{{index()}}",
+            "name": "{{firstName()}} {{surname()}}"
+          }
+        ]
+      }
+    ],
+    "mutualFriends": [
+      "{{repeat(3)}}",
+      {
+        "_id": "{{objectId()}}",
+        "index": "{{index()}}",
+        "name": "{{firstName()}} {{surname()}}"
+      }
+    ]
+  }
+]

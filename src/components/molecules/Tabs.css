@@ -1,0 +1,45 @@
+.TabPane {
+  /* color: red; */
+}
+
+.TabNav {
+}
+
+.TabNav .nav-item {
+  flex: 1 0 0;
+  cursor: pointer;
+}
+
+.TabNav .nav-item .nav-link {
+  background: #eee;
+  color: #9a9a9a;
+  border: 0px solid grey;
+  border-right: 1px solid grey;
+  border-bottom: 5px solid transparent;
+  border-bottom: 5px solid #f0f0f0;
+  border-bottom: 5px solid grey;
+}
+
+.TabNav .active.nav-link {
+  /* border-bottom: 5px solid #ff652f;
+  border-bottom: 5px solid #5bc5a7; */
+}
+
+.TabNav .nav-link .top-title {
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+.TabNav .nav-link .sub-title {
+  /* color: #ff6731;
+  color: #75ccb3; */
+  font-size: 1.75rem;
+  font-weight: 900;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.TabNav .nav-link .sub-title::after {
+  content: " ";
+}
