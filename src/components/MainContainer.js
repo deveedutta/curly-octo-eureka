@@ -1,21 +1,10 @@
-import React, { useState } from "react";
-import {
-  FormGroup,
-  Form,
-  Label,
-  Button,
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
-  Container,
-  Spinner,
-  Card,
-} from "reactstrap";
+import React from "react";
+import { Container } from "reactstrap";
 
+import FormsContainer from "../components/FormsContainer";
 import AddFriendForm from "./AddFriendForm";
-import GenericForm from "./molecules/GenericForm";
-import GenericFormTwo from "./molecules/GenericFormTwo";
+import NoContent from "./atoms/NoContent";
+import Loader from "./atoms/Loader";
 import useTwoWay from "../hooks/useTwoWay.js";
 
 // import img from "./0_yNMBXw8yiieWA15T.png";
@@ -26,67 +15,6 @@ import img from "../android-v3-home.png";
 import { FriendsListTypeThree as FriendsList } from "./molecules/FriendsListTypeThree";
 import { TabViewOne as Tabs } from "./molecules/TabViewOne";
 
-const Loader = (props) => {
-  const { shouldShowForm } = useTwoWay(false);
-
-  return (
-    <Card
-      style={{
-        padding: "1rem",
-      }}
-    >
-      <Spinner className="d-flex align-self-center" style={{}} />
-      <div
-        style={{
-          fontSize: "36px",
-        }}
-      >
-        Loading..
-      </div>
-    </Card>
-  );
-};
-
-const NoContent = (props) => {
-  return (
-    <div
-      className="d-flex justify-content-center"
-      style={{
-        height: "100vh",
-        padding: "20vh",
-      }}
-    >
-      <h2 className="text-muted" style={{ opacity: "0.2", fontSize: "10vh" }}>
-        No Content to show
-      </h2>
-    </div>
-  );
-};
-
-const FormWrapper = (props) => {
-  return (
-    <React.Fragment>
-      <GenericForm />
-      <GenericFormTwo />
-      <FormAddNew />
-    </React.Fragment>
-  );
-};
-const FormAddNew = (props) => {
-  const { shouldShowForm } = useTwoWay(false);
-
-  return (
-    <Form>
-      <InputGroup>
-        <InputGroupAddon addonType="prepend">
-          <InputGroupText>@</InputGroupText>
-        </InputGroupAddon>
-        <Input placeholder="username" />
-      </InputGroup>
-    </Form>
-  );
-};
-
 export const MainContainer = (props) => {
   const {
     shouldShowForm,
@@ -95,7 +23,7 @@ export const MainContainer = (props) => {
 
   let tabContent = [
     {
-      el: <FormWrapper />,
+      el: <FormsContainer />,
       title: "Form Validation",
       subTitle: "Formik",
       color: "#576",

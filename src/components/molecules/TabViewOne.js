@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import classnames from "classnames";
 import {
   TabContent,
   TabPane,
@@ -13,7 +14,9 @@ import {
   Col,
   Spinner,
 } from "reactstrap";
-import classnames from "classnames";
+
+import ListOfEvents from "../atoms/ListOfEvents";
+
 import "./Tabs.css";
 
 export const TabViewOne = (props) => {
@@ -117,7 +120,55 @@ export const TabViewOne = (props) => {
 
           <TabPane tabId="2">
             <Row>
-              <Col sm="6">
+              <Col sm="3">
+                <Card body>
+                  <CardTitle>List Of Events</CardTitle>
+                  <CardText>Text</CardText>
+                  <ListOfEvents />
+                </Card>
+              </Col>
+              <Col sm="3">
+                <Card body>
+                  <CardTitle>Clipboard Events Event names:</CardTitle>
+                  <CardText>
+                    <code>onCut</code>
+                    <br />
+                    <code>onCopy</code>
+                    <br />
+                    <code>onPaste</code>
+                    <br />
+                  </CardText>
+                  <pre>Composition Events</pre>
+                  <CardText>
+                    <code>DOMDataTransfer</code>
+                    <br />
+                    <code>clipboardData</code>
+                    <br />
+                    <code>onCompositionEnd</code>
+                    <br />
+                    <code>onCompositionEnd</code>
+                    <br />
+                    <code>onCompositionEnd</code>
+                    <br />
+                    <code>onCompositionEnd</code>
+                    <br />
+                    <code>onCompositionEnd</code>
+                  </CardText>
+                  <pre> asdasd</pre>
+                  <CardText>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <code>onCompositionEnd</code>
+                    <br />
+                    <code>onCompositionStart</code>
+                    <br />
+                    <code>onCompositionUpdate</code>
+                  </CardText>
+                </Card>
+              </Col>
+              <Col sm="3">
                 <Card body>
                   <CardTitle>Special Title Treatment</CardTitle>
                   <CardText>
@@ -127,7 +178,7 @@ export const TabViewOne = (props) => {
                   <Button>Go somewhere</Button>
                 </Card>
               </Col>
-              <Col sm="6">
+              <Col sm="3">
                 <Card body>
                   <CardTitle>Special Title Treatment</CardTitle>
                   <CardText>

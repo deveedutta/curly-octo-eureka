@@ -17,28 +17,31 @@ export default class App extends React.Component {
   componentDidMount() {}
   render() {
     return (
-      <ExpenseStore>
-        <div className="App">
-          <div
-            className="d-flex"
-            style={{
-              padding: "20px",
-              background: "#5bc5a7",
-              color: "#fff",
-              textShadow: "0px 1px 1px #000",
-            }}
-          >
-            <div className="column-one">
-              <h1>Wise Split</h1>
-              <h2>Split yo bills!</h2>
+      <React.Fragment>
+        <ExpenseStore>
+          <div className="App">
+            <div
+              className="d-flex"
+              style={{
+                padding: "20px",
+                background: "#5bc5a7",
+                color: "#fff",
+                textShadow: "0px 1px 1px #000",
+              }}
+            >
+              <div className="column-one">
+                <h1>Wise Split</h1>
+                <h2>Split yo bills!</h2>
+              </div>
+              <div className="column-two">
+                <TopMenu />;
+              </div>
             </div>
-            <div className="column-two">
-              <TopMenu />;
-            </div>
+
+            <Main />
           </div>
-          <Main />
-        </div>
-      </ExpenseStore>
+        </ExpenseStore>
+      </React.Fragment>
     );
   }
 }
