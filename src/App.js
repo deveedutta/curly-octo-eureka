@@ -1,47 +1,49 @@
-import React, { useState, useEffect } from "react";
-
-import ExpenseStore, { ExpenseStoreConsumer } from "./stores/ExpenseStore";
-import TopMenu from "./components/TopMenu";
-
-import { MainContainer as Main } from "./components/MainContainer";
-
+import React, { useState, useEffect, Suspense } from "react";
+// CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+// Generic Components
+import { Button, Modal, ModalBody } from "reactstrap";
 
-  componentDidMount() {}
-  render() {
-    return (
-      <React.Fragment>
-        <ExpenseStore>
-          <div className="App">
-            <div
-              className="d-flex"
-              style={{
-                padding: "20px",
-                background: "#5bc5a7",
-                color: "#fff",
-                textShadow: "0px 1px 1px #000",
-              }}
-            >
-              <div className="column-one">
-                <h1>Wise Split</h1>
-                <h2>Split yo bills!</h2>
-              </div>
-              <div className="column-two">
-                <TopMenu />;
-              </div>
-            </div>
+// Custom Components
+import Center from "./components/atoms/Center";
+import StopWatch from "./components/StopWatch";
 
-            <Main />
-          </div>
-        </ExpenseStore>
-      </React.Fragment>
-    );
-  }
-}
+const LazyStopWatch = React.lazy(() => import("./components/StopWatch"));
+
+const App = (props) => {
+  const [initialState, setState] = useState(props);
+
+  // modal functions
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+
+  useEffect(() => {
+    console.log("did mount");
+  }, []);
+
+  return (
+    <React.Fragment>
+      <h1>Welcome</h1>
+      {/* <Center>
+        <StopWatch />
+      </Center> */}
+
+      <Center>
+        <Button color="info" onClick={toggle}>
+          LazyStopWatch
+        </Button>
+      </Center>
+      <Modal isOpen={modal} toggle={toggle}>
+        <ModalBody>
+          <Suspense fallback={<div>Loading...</div>}>
+            <LazyStopWatch />
+          </Suspense>
+        </ModalBody>
+      </Modal>
+    </React.Fragment>
+  );
+};
+
+export default App;
