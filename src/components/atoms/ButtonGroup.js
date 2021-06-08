@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./ButtonGroup.css";
 
-export const ButtonGroup = (props) => {
-  const defaultState = {
-    onClick: () => {},
-  };
-  const [initialState, setState] = useState(props);
-
-  const { children, className, disabled, onClick } = initialState;
-
+export const ButtonGroup = ({ children, className, ...rest }) => {
   useEffect(() => {
     console.log("did mount: ButtonGroup");
   }, []);
 
   return (
-    <ul className={`${className} button-group`} {...props}>
+    <ul className={`${className} button-group`} {...rest}>
       {children?.map((el) => (
         <li>{el}</li>
       ))}

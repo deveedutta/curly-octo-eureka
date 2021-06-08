@@ -5,10 +5,6 @@ export const ClockStoreContextProvider = ClockStoreContext.Provider;
 export const ClockStoreContextConsumer = ClockStoreContext.Consumer;
 
 class ClockStore extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     // this.doThis();
     // this.doThat();

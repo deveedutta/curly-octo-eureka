@@ -13,11 +13,21 @@ import StopWatch from "./components/StopWatch";
 const LazyStopWatch = React.lazy(() => import("./components/StopWatch"));
 
 const App = (props) => {
-  const [initialState, setState] = useState(props);
+  const defaultState = {
+    showModal: false,
+  };
+  const [initialState, setState] = useState({
+    ...props,
+    ...defaultState,
+  });
 
   // modal functions
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
+
+  const toggle = () =>
+    setState({
+      ...initialState,
+      showModal: !initialState.showModal,
+    });
 
   useEffect(() => {
     console.log("did mount");
@@ -25,23 +35,28 @@ const App = (props) => {
 
   return (
     <React.Fragment>
-      <h1>Welcome</h1>
+      <Center>
+        <h1>Welcome</h1>
+      </Center>
+
       {/* <Center>
         <StopWatch />
       </Center> */}
 
       <Center>
         <Button color="info" onClick={toggle}>
-          LazyStopWatch
+          Load LazyStopWatch
         </Button>
       </Center>
-      <Modal isOpen={modal} toggle={toggle}>
+      <Modal isOpen={initialState.showModal} toggle={toggle}>
         <ModalBody>
           <Suspense fallback={<div>Loading...</div>}>
             <LazyStopWatch />
           </Suspense>
         </ModalBody>
       </Modal>
+
+      <StopWatch />
     </React.Fragment>
   );
 };

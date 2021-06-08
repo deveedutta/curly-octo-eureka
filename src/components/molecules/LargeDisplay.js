@@ -1,23 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
-const LargeDisplay = (props) => {
-  const defaultState = {
-    onClick: () => {},
-  };
-  const [initialState, setState] = useState({
-    ...props,
-    startTime: "00:00:00",
-    currentTime: "00:00:00",
-  });
-
-  const { startTime, currentTime, children, className, disabled, onClick } =
-    initialState;
+const LargeDisplay = ({ startTime, ...rest }) => {
+  let currentTime = startTime || "00:00:00";
 
   useEffect(() => {
-    console.log("did mount");
+    console.log("did mount: LargeDisplay");
   }, []);
 
-  return <div {...props}>{currentTime}</div>;
+  return <div {...rest}>{currentTime}</div>;
 };
 
 export default LargeDisplay;

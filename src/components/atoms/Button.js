@@ -5,12 +5,14 @@ export const Button = (props) => {
   const defaultState = {
     onClick: () => {},
   };
+  const aria = {
+    ariaPressed: false,
+    // aria-expanded
+  };
   const [initialState, setState] = useState({
+    ...{ defaultState },
     ...props,
-    ...{
-      ariaPressed: false,
-      // aria-expanded
-    },
+    ...aria,
   });
 
   const { children, className, disabled, onClick } = initialState;
@@ -33,7 +35,8 @@ export const Button = (props) => {
     <button
       {...props}
       tabindex="0"
-      role="button"
+      // role="button"
+      disabled={disabled}
       aria-pressed={initialState.ariaPressed}
       className={`${className || ""} button`}
       onClick={ariaOnClick}
