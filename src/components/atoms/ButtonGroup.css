@@ -1,0 +1,30 @@
+.button-group {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.button-group .button {
+  border-radius: 0;
+}
+
+.button-group > li {
+  list-style: none;
+}
+
+.button-group > li > button,
+.button-group > li > .button {
+  border: 1px solid #ccc;
+  border-right-width: 0px;
+}
+
+.button-group > li:first-child > button,
+.button-group > li:first-child > .button {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.button-group > li:last-child > button,
+.button-group > li:last-child > .button {
+  border-radius: 0 0.25rem 0.25rem 0;
+  border-right-width: 1px;
+}

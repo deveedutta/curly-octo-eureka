@@ -1,0 +1,19 @@
+{
+  "short_name": "StopWatch",
+  "name": "StopWatch",
+  "icons": [
+    {
+      "src": "alarm_on_black_192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#fff",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#fff",
+  "shortcuts": [],
+  "description": "StopWatch",
+  "screenshots": []
+}

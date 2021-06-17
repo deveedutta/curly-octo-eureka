@@ -1,24 +1,20 @@
 import { useState, useContext, useEffect } from "react";
 
-import { ExpenseStoreContext } from "../stores/ExpenseStore";
+import { ClockStoreContext } from "../stores/ClockStore";
 
 const useTwoWay = (...args) => {
-  const expenseStore = useContext(ExpenseStoreContext);
+  const clockStore = useContext(ClockStoreContext);
 
   useEffect(() => {});
 
   return {
-    showForm: () => {
-      expenseStore.updateUIState({
-        showForm: true,
+    onFoo: () => {
+      clockStore.updateUIState({
+        foo: "bar",
       });
     },
     state: {
-      ...expenseStore.initialUIState,
-      ...expenseStore.appState,
-      initialUIState: expenseStore.initialUIState,
-      shouldShowForm: expenseStore.initialUIState.showForm,
-      addNew: expenseStore.addNew,
+      ...clockStore,
     },
   };
 };

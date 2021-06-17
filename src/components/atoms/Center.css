@@ -1,0 +1,9 @@
+.center {
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  min-width: 99vw;
+  width: 99vw;
+  box-sizing: border-box;
+  justify-content: center;
+}

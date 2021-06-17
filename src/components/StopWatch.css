@@ -1,0 +1,7 @@
+.StopWatch {
+  flex-direction: column;
+}
+
+.StopWatch .ButtonGroup {
+  justify-content: center;
+}

@@ -1,9 +1,0 @@
-.TopMenu {
-  display: flex;
-
-  list-style: none;
-}
-
-.TopMenu li {
-  margin: 0.2rem;
-}

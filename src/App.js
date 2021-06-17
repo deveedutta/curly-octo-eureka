@@ -1,44 +1,73 @@
-import React, { useState, useEffect } from "react";
-
-import ExpenseStore, { ExpenseStoreConsumer } from "./stores/ExpenseStore";
-import TopMenu from "./components/TopMenu";
-
-import { MainContainer as Main } from "./components/MainContainer";
-
+import React, { useState, useEffect, Suspense } from "react";
+// CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+// Generic Components
+import { Button, Modal, ModalBody } from "reactstrap";
 
-  componentDidMount() {}
-  render() {
-    return (
-      <ExpenseStore>
-        <div className="App">
-          <div
-            className="d-flex"
-            style={{
-              padding: "20px",
-              background: "#5bc5a7",
-              color: "#fff",
-              textShadow: "0px 1px 1px #000",
-            }}
-          >
-            <div className="column-one">
-              <h1>Wise Split</h1>
-              <h2>Split yo bills!</h2>
-            </div>
-            <div className="column-two">
-              <TopMenu />;
-            </div>
-          </div>
-          <Main />
-        </div>
-      </ExpenseStore>
-    );
-  }
-}
+import img from "./alarm_on_black_192x192.png";
+
+// Custom Components
+import Center from "./components/atoms/Center";
+import StopWatch from "./components/StopWatch";
+import Loader from "./components/atoms/Loader";
+
+import ServiceWorker from "./ServiceWorker";
+
+const LazyStopWatch = React.lazy(() => import("./components/StopWatch"));
+const LazyModal = React.lazy(() => import("./components/MyModal"));
+const App = (props) => {
+  const defaultState = {
+    showModal: false,
+  };
+  const [initialState, setState] = useState({
+    ...props,
+    ...defaultState,
+  });
+
+  // modal functions
+
+  const toggle = () =>
+    setState({
+      ...initialState,
+      showModal: !initialState.showModal,
+    });
+
+  ServiceWorker.register();
+
+  useEffect(() => {
+    // console.log("did mount");
+  }, []);
+
+  return (
+    <React.Fragment>
+      <Center>
+        <h1>Welcome</h1>
+      </Center>
+      <Center>
+        <img src={img} height="50" width="50" />
+      </Center>
+      {/* <Center>
+        <StopWatch />
+      </Center> */}
+
+      <Suspense fallback={<Loader />}>
+        <LazyModal isOpen={initialState.showModal} toggle={toggle} />
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <LazyStopWatch startTime={"00:00:01"} />
+      </Suspense>
+
+      <Center>
+        <Button color="info" onClick={toggle}>
+          Load LazyStopWatch
+        </Button>
+      </Center>
+      <StopWatch />
+    </React.Fragment>
+  );
+};
+
+export default App;
